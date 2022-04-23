@@ -1,9 +1,9 @@
-const request = require('request'); 
+const request = require('request');
 
 
 
 const fetchBreedDescription = function(breedName, callback) {
-  request(`https://api.thecatapi.com/v1/breeds/search?q=${breedName[0]}`,  (error, response, body) => {
+  request(`https://api.thecatapi.com/v1/breeds/search?q=${breedName}`,  (error, response, body) => {
     
     if (error) {
       callback(error, null);
@@ -11,7 +11,7 @@ const fetchBreedDescription = function(breedName, callback) {
     }
     
     const data = JSON.parse(body);
-    if(!data.length) {
+    if (!data.length) {
       callback('Cat cannot be found', null);
       return;
     }
